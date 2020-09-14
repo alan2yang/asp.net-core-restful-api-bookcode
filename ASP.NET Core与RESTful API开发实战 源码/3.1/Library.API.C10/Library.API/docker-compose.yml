@@ -1,0 +1,38 @@
+version: '3.4'
+
+services:
+  library_api:    
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "6000:80"
+      - "6001:443"
+    depends_on:
+      - sqldb
+      - redis_cache
+    environment:
+      - ASPNETCORE_URLS=https://+;http://+
+      - ASPNETCORE_HTTPS_PORT=6001
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=YourCertPwd
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/root/.aspnet/https/localhost.pfx
+      - ConnectionStrings__DefaultConnection=Server=sqldb;User=sa;Password=YourDbPwd1234!@;Database=Library;
+      - Caching__Host=redis_cache
+
+    volumes:
+      - D:\DEV\VSOnline\BookCodeSample_RESTfulAPI\Library.API.C10\Data:/root/.aspnet/https
+           
+  sqldb:
+    image: microsoft/mssql-server-linux    
+    ports: 
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=!Abcd123
+    volumes:
+      - D:\DEV\VSOnline\BookCodeSample_RESTfulAPI\Library.API.C10\Data\DBFiles:/var/opt/mssql/data
+
+  redis_cache:
+    image: redis
+    ports:
+      - "16379:6379" 

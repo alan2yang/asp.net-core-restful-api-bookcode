@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Library.API</name>
+    </assembly>
+    <members>
+        <member name="M:Library.API.Controllers.AuthenticateController.AddUserAsync(Library.API.Models.RegisterUser)">
+            <summary>
+            创建用户，ASP.NET Core Identity会处理所有创建失败的情况，如用户名已经存在、密码不符合要求，如果满足所有要求，则用户创建成功。
+            </summary>
+            <param name="registerUser"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Library.API.Controllers.AuthorController.CreateAuthorAsync(Library.API.Models.AuthorForCreationDto)">
+            <summary>
+            添加一个作者
+            </summary>
+            <param name="authorForCreationDto">作者</param>
+            <remarks>
+            添加作者的请求：        
+            
+                POST api/authors
+                {
+                    "name" : "Author1",
+                    "birthplace" : "Beijing",
+                    "dateOfBirth" : "1980/1/1",
+                    "email" : "xxx@xxx.com"
+                }
+            </remarks>
+            <returns>添加结果</returns>
+            <response code="201">返回新创建的资源</response>
+            <response code="400">提交请求时的信息不正确</response>
+        </member>
+        <member name="M:Library.API.Controllers.AuthorController.DeleteAuthorAsync(System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="authorId"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

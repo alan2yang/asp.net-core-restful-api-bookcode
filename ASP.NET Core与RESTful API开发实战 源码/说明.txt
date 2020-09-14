@@ -1,0 +1,5 @@
+此文件夹中的内容为《ASP.NET Core与RESTful API开发实战》一书的项目源码，共包含两个子文件夹：2.2与3.1。
+
+其中2.2表示基于ASP.NET Core 2.2的源码，3.1则是基于ASP.NET Core 3.1的源码。如果您的机器安装了.NET Core 2.2 SDK则可以运行2.2版本的代码，如果安装了最新的.NET Core 3.1 SDK，则应运行3.1版本的代码。
+
+另外，需要注意，3.1版本的代码是在2.2版本的基础上做了最小程度的修改，仅保证了程序能够正常运行并工作，但像ASP.NET Core 3.0+以上提供的IHostingEnvironment、Host.CreateDefaultBuilder等内容则均未替换，请读者注意。
